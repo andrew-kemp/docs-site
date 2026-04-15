@@ -22,7 +22,6 @@ theme:
         name: Switch to light mode
   features:
     - navigation.sections
-    - navigation.expand
     - navigation.path
     - navigation.top
     - navigation.indexes
@@ -62,6 +61,19 @@ plugins:
 
 nav:
   - Home: index.md
+  - DNS Migrator:
+    - dns-migrator/index.md
+    - Quick Start: dns-migrator/quick-start.md
+    - Architecture: dns-migrator/architecture.md
+    - Deployment:
+      - Prerequisites: dns-migrator/prerequisites.md
+      - Configuration: dns-migrator/configuration.md
+      - Deploy: dns-migrator/deployment.md
+    - Usage:
+      - Web UI Guide: dns-migrator/web-ui.md
+      - PowerShell CLI: dns-migrator/powershell.md
+    - API Reference: dns-migrator/api-reference.md
+    - Troubleshooting: dns-migrator/troubleshooting.md
   - MFA Onboarding:
     - mfa-onboarding/index.md
     - Quick Start: mfa-onboarding/quick-start.md
@@ -77,19 +89,6 @@ nav:
       - Tracking & Status: mfa-onboarding/tracking.md
     - Troubleshooting: mfa-onboarding/troubleshooting.md
     - What's New: mfa-onboarding/whats-new.md
-  - DNS Migrator:
-    - dns-migrator/index.md
-    - Quick Start: dns-migrator/quick-start.md
-    - Architecture: dns-migrator/architecture.md
-    - Deployment:
-      - Prerequisites: dns-migrator/prerequisites.md
-      - Configuration: dns-migrator/configuration.md
-      - Deploy: dns-migrator/deployment.md
-    - Usage:
-      - Web UI Guide: dns-migrator/web-ui.md
-      - PowerShell CLI: dns-migrator/powershell.md
-    - API Reference: dns-migrator/api-reference.md
-    - Troubleshooting: dns-migrator/troubleshooting.md
   - Tenant Audit:
     - tenant-audit/index.md
     - Getting Started: tenant-audit/getting-started.md
