@@ -21,14 +21,16 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
+    - navigation.path
     - navigation.top
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - content.code.copy
     - content.tabs.link
+    - toc.integrate
   icon:
     repo: fontawesome/brands/github
 
@@ -61,7 +63,7 @@ plugins:
 nav:
   - Home: index.md
   - MFA Onboarding:
-    - Overview: mfa-onboarding/index.md
+    - mfa-onboarding/index.md
     - Quick Start: mfa-onboarding/quick-start.md
     - Architecture: mfa-onboarding/architecture.md
     - Deployment:
@@ -76,7 +78,7 @@ nav:
     - Troubleshooting: mfa-onboarding/troubleshooting.md
     - What's New: mfa-onboarding/whats-new.md
   - DNS Migrator:
-    - Overview: dns-migrator/index.md
+    - dns-migrator/index.md
     - Quick Start: dns-migrator/quick-start.md
     - Architecture: dns-migrator/architecture.md
     - Deployment:
