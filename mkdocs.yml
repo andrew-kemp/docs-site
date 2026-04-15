@@ -1,0 +1,73 @@
+site_name: Andy Kemp Docs
+site_url: https://docs.andykemp.com
+site_description: Technical documentation for Andy Kemp's tools and solutions
+site_author: Andy Kemp
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+repo_url: https://github.com/andrew-kemp
+repo_name: andrew-kemp
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - MFA Onboarding:
+    - Overview: mfa-onboarding/index.md
+    - Quick Start: mfa-onboarding/quick-start.md
+    - Architecture: mfa-onboarding/architecture.md
+    - Deployment:
+      - Prerequisites: mfa-onboarding/prerequisites.md
+      - Configuration: mfa-onboarding/configuration.md
+      - Step-by-Step Deployment: mfa-onboarding/deployment.md
+      - Resume & Update: mfa-onboarding/update.md
+    - Features:
+      - Upload Portal: mfa-onboarding/upload-portal.md
+      - Email Reports: mfa-onboarding/email-reports.md
+      - Tracking & Status: mfa-onboarding/tracking.md
+    - Troubleshooting: mfa-onboarding/troubleshooting.md
+    - What's New: mfa-onboarding/whats-new.md
