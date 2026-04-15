@@ -11,7 +11,7 @@ hide:
 
 <p class="hero-tagline">This documentation hub supports the tools and approaches I use when working with Microsoft 365 tenants — covering security, identity, migrations, and automation.<br><br>Whether you're implementing yourself or just trying to understand where things stand, these guides are designed to give you clarity and direction.</p>
 
-<div class="hero-buttons">
+<div class="hero-buttons" markdown>
 
 [:material-book-open-variant: Browse Tools](#tools){ .md-button .md-button--primary }
 [:material-web: andykemp.com](https://www.andykemp.com){ .md-button }
