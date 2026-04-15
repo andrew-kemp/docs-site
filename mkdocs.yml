@@ -81,7 +81,6 @@ plugins:
   - search
 
 nav:
-  - Home: index.md
   - DNS Migrator:
     - dns-migrator/index.md
     - Quick Start: dns-migrator/quick-start.md
