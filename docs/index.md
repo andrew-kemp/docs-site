@@ -20,6 +20,14 @@ Migrate DNS zones from any provider to Cloudflare — cleanly, correctly, and wi
 
 ---
 
+### :material-shield-search: Tenant Audit
+
+Comprehensive read-only security and compliance assessment for Microsoft 365 tenants. Get scored across Security Risk, Compliance Posture, and Migration Complexity — with findings mapped to NCSC CAF, Cyber Essentials, and NIST 800-53. Download Technical PDF, CXO Executive, and PowerPoint reports.
+
+[:material-arrow-right: **Get Started**](tenant-audit/index.md){ .md-button .md-button--primary }
+
+---
+
 ## About
 
 These tools are built to simplify common IT administration tasks in Microsoft 365 and Azure environments. Each project includes full deployment automation, comprehensive logging, and detailed documentation.

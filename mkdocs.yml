@@ -90,3 +90,13 @@ nav:
       - PowerShell CLI: dns-migrator/powershell.md
     - API Reference: dns-migrator/api-reference.md
     - Troubleshooting: dns-migrator/troubleshooting.md
+  - Tenant Audit:
+    - tenant-audit/index.md
+    - Getting Started: tenant-audit/getting-started.md
+    - What We Check: tenant-audit/what-we-check.md
+    - Scoring & Ratings: tenant-audit/scoring.md
+    - Intelligence & Insights: tenant-audit/intelligence.md
+    - Compliance Frameworks: tenant-audit/compliance.md
+    - Reports & Exports: tenant-audit/reports.md
+    - Licensing Requirements: tenant-audit/licensing.md
+    - FAQ: tenant-audit/faq.md
