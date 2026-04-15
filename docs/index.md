@@ -4,17 +4,11 @@ Welcome to the documentation hub for Andy Kemp's tools and solutions.
 
 ## Projects
 
-<div class="grid cards" markdown>
+### :material-shield-lock: MFA Onboarding
 
--   :material-shield-lock:{ .lg .middle } **MFA Onboarding**
+Automated MFA enrollment system for Microsoft 365 environments. Upload users, send personalised enrollment emails, track progress, and manage security group membership — all automated.
 
-    ---
-
-    Automated MFA enrollment system for Microsoft 365 environments. Upload users, send personalised enrollment emails, track progress, and manage security group membership — all automated.
-
-    [:octicons-arrow-right-24: Get Started](mfa-onboarding/index.md)
-
-</div>
+[:material-arrow-right: **Get Started**](mfa-onboarding/index.md){ .md-button .md-button--primary }
 
 ---
 
