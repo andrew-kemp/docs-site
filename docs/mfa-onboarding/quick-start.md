@@ -7,89 +7,127 @@ Get the MFA Onboarding system deployed in under 30 minutes.
 Before you begin, ensure you have:
 
 - **Windows 10/11** or **Windows Server 2019+**
-- **PowerShell 7.4+** (run `pwsh` to check)
-- **Azure CLI** installed
+- **PowerShell 7.4+** — open `pwsh` to check (not Windows PowerShell)
+- **Azure CLI** installed (`winget install -e --id Microsoft.AzureCLI`)
 - **Azure Subscription** with Owner or Contributor access
 - **Microsoft 365** with Global Admin or equivalent roles
 
-## Step 1: Download
+!!! warning "PowerShell 7 Required"
+    All scripts require PowerShell 7+ (`pwsh.exe`). Windows PowerShell 5.1 is **not supported**.
+    Install it with: `winget install --id Microsoft.Powershell --source winget`
 
-### Option A: Bootstrap Script (Recommended)
+## Step 1: Download & Launch Setup
 
-```powershell
-# Download the bootstrap script
-wget https://raw.githubusercontent.com/andrew-kemp/MFA-Onboard-Tool/main/Get-MFAOnboarder.ps1 -OutFile Get-MFAOnboarder.ps1
-
-# Run it - it downloads everything and starts deployment
-.\Get-MFAOnboarder.ps1
-```
-
-### Option B: Manual Download
+Open **PowerShell 7** (`pwsh`) and run the one-liner bootstrap command:
 
 ```powershell
-# Download and extract
-Invoke-WebRequest -Uri "https://github.com/andrew-kemp/MFA-Onboard-Tool/archive/refs/heads/main.zip" -OutFile mfa-tool.zip
-Expand-Archive mfa-tool.zip -DestinationPath . -Force
-cd MFA-Onboard-Tool-main\v2
+iwr https://raw.githubusercontent.com/andrew-kemp/MFA-Onboard-Tool/main/Get-MFAOnboarder.ps1 -OutFile Get-MFAOnboarder.ps1; .\Get-MFAOnboarder.ps1
 ```
 
-## Step 2: Configure
+This does three things:
 
-1. Copy the template config:
+1. Downloads `Get-MFAOnboarder.ps1` from GitHub
+2. Downloads and extracts the full repository to your chosen install location (default: `C:\Scripts`)
+3. Launches `Setup.ps1` which detects this is a fresh install and offers guided deployment
+
+!!! tip "Alternative: Manual Download"
+    If you prefer to download manually:
     ```powershell
-    Copy-Item mfa-config.ini.template mfa-config.ini
+    Invoke-WebRequest -Uri "https://github.com/andrew-kemp/MFA-Onboard-Tool/archive/refs/heads/main.zip" -OutFile mfa-tool.zip
+    Expand-Archive mfa-tool.zip -DestinationPath . -Force
+    cd MFA-Onboard-Tool-main\v2
+    .\Setup.ps1
     ```
 
-2. Edit `mfa-config.ini` with your organisation's details:
-    ```ini
-    [Tenant]
-    TenantId=yourtenant.onmicrosoft.com
-    SubscriptionId=your-azure-subscription-id
+## Step 2: Setup Menu
 
-    [SharePoint]
-    SiteUrl=https://yourtenant.sharepoint.com/sites/MFAOps
-    SiteOwner=admin@yourtenant.com
+For a **new install**, Setup.ps1 shows:
 
-    [Security]
-    MFAGroupName=MFA Enabled Users
+```
+========================================
+  MFA Onboarding Tool - Setup
+========================================
 
-    [Azure]
-    ResourceGroup=rg-mfa-onboarding
-    Region=uksouth
+  No existing deployment found in this folder.
 
-    [Email]
-    MailboxName=MFA Registration
-    NoReplyMailbox=MFA-Registration@yourtenant.com
-    MailboxDelegate=admin@yourtenant.com
-    ```
+  What would you like to do?
 
-    !!! tip
-        See [Configuration](configuration.md) for all available settings.
-
-## Step 3: Deploy
-
-### Full Automated Deployment
-
-```powershell
-.\Run-Complete-Deployment-Master.ps1
+    [1] New deployment   - Full guided setup (recommended)
+    [0] Exit
 ```
 
-This runs all 12 steps automatically with retry on failure.
+Select **1** to launch the full automated deployment.
 
-### Or Step-by-Step
+For an **existing install**, Setup.ps1 detects your config and shows:
 
-```powershell
-.\01-Install-Prerequisites.ps1    # Install PowerShell modules
-.\02-Provision-SharePoint.ps1     # Create SharePoint site & list
-.\03-Create-Shared-Mailbox.ps1    # Create shared mailbox
-.\04-Create-Azure-Resources.ps1   # Create Azure resources
-.\05-Configure-Function-App.ps1   # Configure Function App
-.\06-Deploy-Logic-App.ps1         # Deploy Logic App
-.\07-Deploy-Upload-Portal1.ps1    # Deploy upload portal
-.\08-Deploy-Email-Reports.ps1     # Deploy email reports (optional)
+```
+  Existing deployment detected
+    Tenant:       yourtenant.onmicrosoft.com
+    Function App: func-mfa-yourorg-001
+
+    [1] Update existing deployment
+    [2] Pull latest scripts + update
+    [3] Upgrade to v2
+    [4] Fresh install (overwrite)
+    [5] Resume previous install
+    [6] Quick fix (pull + permissions)
+    [0] Exit
 ```
 
-## Step 4: Post-Deployment
+See [Resume & Update](update.md) for details on each option.
+
+## Step 3: Configure
+
+The deployment wizard will prompt you for key settings, or you can pre-fill `mfa-config.ini`:
+
+```ini
+[Tenant]
+TenantId=yourtenant.onmicrosoft.com
+SubscriptionId=your-azure-subscription-id
+
+[SharePoint]
+SiteUrl=https://yourtenant.sharepoint.com/sites/MFAOps
+SiteOwner=admin@yourtenant.com
+
+[Security]
+MFAGroupName=MFA Enabled Users
+
+[Azure]
+ResourceGroup=rg-mfa-onboarding
+Region=uksouth
+
+[Email]
+MailboxName=MFA Registration
+NoReplyMailbox=MFA-Registration@yourtenant.com
+MailboxDelegate=admin@yourtenant.com
+```
+
+!!! tip
+    See [Configuration](configuration.md) for all available settings.
+
+## Step 4: Deployment
+
+The full automated deployment (`Run-Complete-Deployment-Master.ps1`) runs all 12 steps in order with retry on failure:
+
+| Step | Script | What It Does |
+|------|--------|--------------|
+| 1 | `01-Install-Prerequisites.ps1` | Install PowerShell modules |
+| 2 | `02-Provision-SharePoint.ps1` | Create SharePoint site & list |
+| 3 | `03-Create-Shared-Mailbox.ps1` | Create shared mailbox |
+| 4 | `04-Create-Azure-Resources.ps1` | Create Azure resources |
+| 5 | `05-Configure-Function-App.ps1` | Configure Function App |
+| 6 | `06-Deploy-Logic-App.ps1` | Deploy Logic App |
+| 7 | `07-Deploy-Upload-Portal1.ps1` | Deploy upload portal |
+| 8 | `08-Deploy-Email-Reports.ps1` | Deploy email reports (optional) |
+| 9 | `Fix-Function-Auth.ps1` | Fix function authentication |
+| 10 | `Fix-Graph-Permissions.ps1` | Fix Graph permissions |
+| 11 | `Check-LogicApp-Permissions.ps1` | Fix Logic App permissions |
+| 12 | `Generate-Deployment-Report.ps1` | Generate final report |
+
+!!! note
+    If interrupted, you can resume from where you left off — see [Resume & Update](update.md).
+
+## Step 5: Post-Deployment
 
 After deployment completes:
 
@@ -104,7 +142,7 @@ After deployment completes:
     - Check the SharePoint list for the new entry
     - Verify the invitation email arrives
 
-## Step 5: Upload Users
+## Step 6: Upload Users
 
 Create a CSV file with your users:
 

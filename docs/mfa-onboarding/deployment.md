@@ -1,8 +1,21 @@
 # Step-by-Step Deployment
 
-## Deployment Options
+## Getting Started
 
-### Option 1: Full Automated Deployment (Recommended)
+The recommended way to start is with `Setup.ps1`:
+
+```powershell
+.\Setup.ps1
+```
+
+For a fresh install, select **[1] New deployment** — this launches `Run-Complete-Deployment-Master.ps1` which runs all 12 steps automatically with retry on failure.
+
+!!! tip "Don't have the scripts yet?"
+    See [Quick Start](quick-start.md) for the one-liner bootstrap command to download everything.
+
+## Advanced: Running Steps Individually
+
+### Option 1: Full Automated Deployment
 
 ```powershell
 .\Run-Complete-Deployment-Master.ps1
