@@ -1,35 +1,66 @@
-# Andy Kemp Docs
+---
+hide:
+  - toc
+---
 
-Welcome to the documentation hub for Andy Kemp's tools and solutions.
+<div class="hero" markdown>
 
-## Projects
+# Andy Kemp Consulting Docs
+
+<p class="hero-subtitle">Technical documentation for tools and solutions built for Microsoft 365</p>
+<p class="hero-tagline">Security · Identity · Migration · Compliance</p>
+
+<div class="hero-buttons">
+
+[:material-book-open-variant: Browse Documentation](#tools){ .md-button .md-button--primary }
+[:material-web: andykemp.com](https://www.andykemp.com){ .md-button }
+
+</div>
+
+</div>
+
+## Tools { #tools }
+
+<div class="tool-grid" markdown>
+
+<div class="tool-card" markdown>
 
 ### :material-dns: DNS Migrator
 
-Migrate DNS zones from any provider to Cloudflare — cleanly, correctly, and without record mangling. Supports DNS-over-HTTPS scanning, Azure DNS export, a web UI with real-time streaming, and PowerShell CLI for batch operations.
+Migrate DNS zones from any provider to Cloudflare — cleanly, correctly, and without record mangling. Supports DNS-over-HTTPS scanning, Azure DNS export, web UI, and PowerShell CLI.
 
-[:material-arrow-right: **Get Started**](dns-migrator/index.md){ .md-button .md-button--primary }
+[:material-arrow-right: Documentation](dns-migrator/index.md){ .md-button .md-button--primary }
 
----
+</div>
+
+<div class="tool-card" markdown>
 
 ### :material-shield-lock: MFA Onboarding
 
-Automated MFA enrollment system for Microsoft 365 environments. Upload users, send personalised enrollment emails, track progress, and manage security group membership — all automated.
+Automated MFA enrolment system for Microsoft 365. Upload users, send personalised enrolment emails, track progress, and manage security group membership — fully automated.
 
-[:material-arrow-right: **Get Started**](mfa-onboarding/index.md){ .md-button .md-button--primary }
+[:material-arrow-right: Documentation](mfa-onboarding/index.md){ .md-button .md-button--primary }
 
----
+</div>
+
+<div class="tool-card" markdown>
 
 ### :material-shield-search: Tenant Audit
 
-Comprehensive read-only security and compliance assessment for Microsoft 365 tenants. Get scored across Security Risk, Compliance Posture, and Migration Complexity — with findings mapped to NCSC CAF, Cyber Essentials, and NIST 800-53. Download Technical PDF, CXO Executive, and PowerPoint reports.
+Read-only security and compliance assessment for Microsoft 365 tenants. Three scoring dimensions, 8 intelligence analysers, 4 compliance frameworks, and professional PDF and PowerPoint reports.
 
-[:material-arrow-right: **Get Started**](tenant-audit/index.md){ .md-button .md-button--primary }
+[:material-arrow-right: Documentation](tenant-audit/index.md){ .md-button .md-button--primary }
+
+</div>
+
+</div>
 
 ---
 
-## About
+<div style="text-align: center; margin-top: 2rem; color: var(--md-default-fg-color--light); font-size: 0.85rem;" markdown>
 
-These tools are built to simplify common IT administration tasks in Microsoft 365 and Azure environments. Each project includes full deployment automation, comprehensive logging, and detailed documentation.
+Built by [Andy Kemp Consulting](https://www.andykemp.com) — Microsoft 365 Security, Identity & Migration Specialist
 
-**GitHub**: [github.com/andrew-kemp](https://github.com/andrew-kemp)
+[:material-linkedin: LinkedIn](https://www.linkedin.com/in/andrewgkemp/){ .md-button } · [:material-github: GitHub](https://github.com/andrew-kemp/){ .md-button } · [:material-phone: +44 131 376 1802](tel:+441313761802){ .md-button }
+
+</div>

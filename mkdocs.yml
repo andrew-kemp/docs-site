@@ -1,22 +1,25 @@
-site_name: Andy Kemp Docs
+site_name: Andy Kemp Consulting Docs
 site_url: https://docs.andykemp.com
-site_description: Technical documentation for Andy Kemp's tools and solutions
-site_author: Andy Kemp
+site_description: Technical documentation for tools and solutions by Andy Kemp Consulting — Microsoft 365 Security, Identity & Migration
+site_author: Andy Kemp Consulting
+
+copyright: >
+  &copy; 2026 Andy Kemp Consulting Ltd — Company No: SC878818 — Registered in Scotland
 
 theme:
   name: material
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -31,6 +34,26 @@ theme:
     - toc.integrate
   icon:
     repo: fontawesome/brands/github
+    logo: material/file-document-multiple
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/andrewgkemp/
+      name: Andy Kemp on LinkedIn
+    - icon: fontawesome/brands/github
+      link: https://github.com/andrew-kemp/
+      name: Andy Kemp on GitHub
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@KempyAG
+      name: Andy Kemp on YouTube
+    - icon: fontawesome/solid/globe
+      link: https://www.andykemp.com
+      name: Andy Kemp Consulting
+  generator: false
+
+extra_css:
+  - assets/css/custom.css
 
 repo_url: https://github.com/andrew-kemp
 repo_name: andrew-kemp
