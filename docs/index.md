@@ -12,6 +12,14 @@ Automated MFA enrollment system for Microsoft 365 environments. Upload users, se
 
 ---
 
+### :material-dns: DNS Migrator
+
+Migrate DNS zones from any provider to Cloudflare — cleanly, correctly, and without record mangling. Supports DNS-over-HTTPS scanning, Azure DNS export, a web UI with real-time streaming, and PowerShell CLI for batch operations.
+
+[:material-arrow-right: **Get Started**](dns-migrator/index.md){ .md-button .md-button--primary }
+
+---
+
 ## About
 
 These tools are built to simplify common IT administration tasks in Microsoft 365 and Azure environments. Each project includes full deployment automation, comprehensive logging, and detailed documentation.
