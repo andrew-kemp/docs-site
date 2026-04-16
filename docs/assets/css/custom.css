@@ -242,4 +242,186 @@
   font-size: 1.1rem;
   font-weight: 600;
 }
+
+/* ══════════════════════════════════════════════════
+   Responsive — Tablet (≤960px)
+   ══════════════════════════════════════════════════ */
+@media screen and (max-width: 960px) {
+
+  /* Hero scales down */
+  .md-typeset .hero {
+    padding: 3rem 1.5rem;
+    margin: 0 -0.6rem 1.5rem;
+    border-radius: 0;
+  }
+
+  .md-typeset .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .md-typeset .hero .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .md-typeset .hero .hero-tagline {
+    font-size: 0.88rem;
+    max-width: 100%;
+  }
+
+  /* Tool grid — 2 columns */
+  .md-typeset .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   Responsive — Mobile (≤600px)
+   ══════════════════════════════════════════════════ */
+@media screen and (max-width: 600px) {
+
+  /* Hero — full bleed, compact */
+  .md-typeset .hero {
+    padding: 2.5rem 1.2rem;
+    margin: 0 -0.8rem 1.5rem;
+  }
+
+  .md-typeset .hero h1 {
+    font-size: 1.45rem;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .md-typeset .hero .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .md-typeset .hero .hero-tagline {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  /* Buttons stack vertically on mobile */
+  .md-typeset .hero .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .md-typeset .hero .hero-buttons .md-button {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  /* Tool grid — single column */
+  .md-typeset .tool-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+  }
+
+  .md-typeset .tool-card {
+    padding: 1.2rem;
+  }
+
+  .md-typeset .tool-card-title {
+    font-size: 1rem;
+  }
+
+  .md-typeset .tool-card p {
+    font-size: 0.8rem;
+  }
+
+  /* Tools section heading */
+  .md-typeset .tools-heading {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.3rem;
+  }
+
+  /* Footer contact strip — tighter on mobile */
+  .md-typeset div[style*="text-align: center"] {
+    font-size: 0.78rem !important;
+  }
+
+  .md-typeset div[style*="text-align: center"] .md-button {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   Responsive — Small mobile (≤400px)
+   ══════════════════════════════════════════════════ */
+@media screen and (max-width: 400px) {
+
+  .md-typeset .hero {
+    padding: 2rem 1rem;
+  }
+
+  .md-typeset .hero h1 {
+    font-size: 1.25rem;
+  }
+
+  .md-typeset .hero .hero-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .md-typeset .hero .hero-tagline {
+    font-size: 0.78rem;
+  }
+
+  .md-typeset .hero .hero-buttons .md-button {
+    max-width: 100%;
+    font-size: 0.78rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   Mobile nav drawer styling
+   ══════════════════════════════════════════════════ */
+@media screen and (max-width: 76.1875em) {
+
+  /* Nav drawer items — larger tap targets */
+  .md-nav--primary .md-nav__link {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  /* Top-level sections in drawer */
+  .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+  .md-nav--primary > .md-nav__list > .md-nav__item > label.md-nav__link {
+    font-size: 0.88rem;
+    padding: 0.7rem 1rem;
+    border-left: none;
+  }
+
+  /* Active state — bottom border instead of left */
+  .md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link,
+  .md-nav--primary > .md-nav__list > .md-nav__item--active > label.md-nav__link {
+    border-left: none;
+    border-bottom: 2px solid var(--md-accent-fg-color);
+    border-radius: 0;
+  }
+
+  /* Child items in drawer */
+  .md-nav--primary .md-nav__item .md-nav .md-nav__link {
+    font-size: 0.84rem;
+    padding: 0.6rem 1rem 0.6rem 1.8rem;
+  }
+
+  /* Section dividers */
+  .md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
+    padding-top: 0.4rem;
+    margin-top: 0.4rem;
+  }
 }
