@@ -34,7 +34,7 @@ hide:
 
 <div class="tool-card" markdown>
 
-<h3 class="tool-card-title">:material-dns: DNS Migrator</h3>
+### :material-dns: DNS Migrator
 
 Migrate DNS zones from any provider to Cloudflare — cleanly, correctly, and without record mangling. Supports DNS-over-HTTPS scanning, Azure DNS export, web UI, and PowerShell CLI.
 
@@ -44,7 +44,7 @@ Migrate DNS zones from any provider to Cloudflare — cleanly, correctly, and wi
 
 <div class="tool-card" markdown>
 
-<h3 class="tool-card-title">:material-shield-lock: MFA Onboarding</h3>
+### :material-shield-lock: MFA Onboarding
 
 Automated MFA enrolment system for Microsoft 365. Upload users, send personalised enrolment emails, track progress, and manage security group membership — fully automated.
 
@@ -54,7 +54,7 @@ Automated MFA enrolment system for Microsoft 365. Upload users, send personalise
 
 <div class="tool-card" markdown>
 
-<h3 class="tool-card-title">:material-shield-search: Tenant Audit</h3>
+### :material-shield-search: Tenant Audit
 
 Read-only security and compliance assessment for Microsoft 365 tenants. Three scoring dimensions, 8 intelligence analysers, 4 compliance frameworks, and professional PDF and PowerPoint reports.
 

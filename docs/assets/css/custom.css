@@ -109,6 +109,28 @@
   margin-bottom: 1rem;
 }
 
+/* Permalink anchors — subtle, only visible on hover */
+.md-typeset .headerlink {
+  opacity: 0;
+  font-size: 0.7em;
+  color: var(--md-default-fg-color--lighter);
+  margin-left: 0.3em;
+  transition: opacity 0.15s ease;
+  text-decoration: none;
+}
+
+.md-typeset h1:hover .headerlink,
+.md-typeset h2:hover .headerlink,
+.md-typeset h3:hover .headerlink,
+.md-typeset h4:hover .headerlink {
+  opacity: 0.4;
+}
+
+.md-typeset .headerlink:hover {
+  opacity: 0.7;
+  color: var(--md-accent-fg-color);
+}
+
 /* Footer branding */
 .md-footer-meta {
   background: #1a1a2e;
