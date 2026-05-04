@@ -41,6 +41,9 @@ jobs:
       - name: Check auth
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "Token is EMPTY"; else echo "Token is set"; fi
+          curl -s -o /dev/null -w "CF API HTTP status: %{http_code}\n" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            https://api.cloudflare.com/client/v4/user/tokens/verify
 
       - name: Deploy to Cloudflare Pages
         run: wrangler pages deploy site --project-name=andykemp-docs-site
