@@ -39,7 +39,8 @@ jobs:
         run: npm install -g wrangler
 
       - name: Check auth
-        run: echo "Token set: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}"
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "Token is EMPTY"; else echo "Token is set"; fi
 
       - name: Deploy to Cloudflare Pages
         run: wrangler pages deploy site --project-name=andykemp-docs-site
