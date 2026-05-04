@@ -47,9 +47,12 @@ You need the following admin roles:
 
 | Licence | Required | Purpose |
 |---------|----------|---------|
-| Microsoft 365 E3/E5 or Business Premium | Yes | SharePoint, Exchange, Azure AD |
-| Azure Subscription | Yes | Function App, Logic App, Storage |
-| Azure AD P1 | Recommended | Conditional Access policies |
+| Microsoft 365 E3/E5 or Business Premium | Yes | SharePoint, Exchange, Entra ID |
+| Azure Subscription | Yes | Function App, Logic App, Storage, App Insights |
+| Entra ID P1 | Recommended | Conditional Access policies |
+
+!!! note
+    The shared mailbox does not require an additional licence.
 
 ## Network Requirements
 

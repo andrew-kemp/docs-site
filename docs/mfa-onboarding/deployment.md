@@ -105,7 +105,7 @@ Creates:
 - Storage Account (with static website enabled)
 - App Service Plan (Consumption/Y1)
 - Function App (PowerShell 7.4, Managed Identity enabled)
-- Application Insights
+- Application Insights (telemetry, request logging, exception tracking)
 
 ### Step 05: Configure Function App
 
@@ -115,9 +115,10 @@ Creates:
 
 Configures:
 
-- Function App settings (SharePoint URL, List ID, Group ID, etc.)
+- Function App settings (SharePoint URL, List ID, Group ID, App Insights keys, etc.)
 - CORS settings for the upload portal
-- Deploys function code (`enrol` and `upload-users` functions)
+- Deploys function code (4 endpoints: `upload-users`, `enrol`, `track-open`, `resend`)
+- Tests endpoint availability
 
 ### Step 06: Deploy Logic App
 
@@ -129,8 +130,9 @@ Deploys:
 
 - Logic App with Managed Identity
 - API connections (SharePoint, Office 365)
-- Invitation orchestration workflow from template
+- Invitation orchestration workflow from template with retry policies (exponential backoff)
 - Placeholder replacement with your config values
+- Manager escalation and email tracking pixel support
 
 !!! note
     After deployment, you must authorise the Office 365 API connection in the Azure Portal.

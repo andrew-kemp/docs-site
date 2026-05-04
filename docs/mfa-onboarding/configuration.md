@@ -68,6 +68,10 @@ StorageAccountName=stmfayourorg001
 | `Region` | Azure region | No |
 | `FunctionAppName` | Function App name (must be globally unique) | No |
 | `StorageAccountName` | Storage account name (must be globally unique) | No |
+| `MFAPrincipalId` | Managed Identity principal ID | Yes |
+| `AppInsightsName` | Application Insights resource name | Yes |
+| `AppInsightsKey` | Instrumentation key | Yes |
+| `AppInsightsConnectionString` | Connection string | Yes |
 
 ### `[Email]`
 
@@ -76,7 +80,7 @@ StorageAccountName=stmfayourorg001
 MailboxName=MFA Registration
 NoReplyMailbox=MFA-Registration@yourtenant.com
 MailboxDelegate=admin@yourtenant.com
-InviteSubject=ACTION REQUIRED: Complete your MFA Registration
+EmailSubject=ACTION REQUIRED: Complete your MFA Registration
 ReminderSubject=REMINDER: Complete your MFA Registration
 ```
 
@@ -85,7 +89,7 @@ ReminderSubject=REMINDER: Complete your MFA Registration
 | `MailboxName` | Display name for the shared mailbox |
 | `NoReplyMailbox` | Email address for the shared mailbox |
 | `MailboxDelegate` | Admin who can access the mailbox |
-| `InviteSubject` | Subject line for initial invitation emails |
+| `EmailSubject` | Subject line for initial invitation emails |
 | `ReminderSubject` | Subject line for reminder emails |
 
 ### `[LogicApp]`
@@ -93,11 +97,14 @@ ReminderSubject=REMINDER: Complete your MFA Registration
 ```ini
 [LogicApp]
 LogicAppName=mfa-invite-orchestrator
+RecurrenceHours=12
 ```
 
 | Setting | Description | Auto-filled |
 |---------|-------------|-------------|
 | `LogicAppName` | Logic App name | No |
+| `RecurrenceHours` | Hours between Logic App runs (default: `12`) | No |
+| `TriggerUrl` | HTTP trigger URL for immediate invocation | Yes |
 | `ConnectionId` | SharePoint API connection ID | Yes |
 | `Office365ConnectionId` | Office 365 API connection ID | Yes |
 
@@ -118,15 +125,17 @@ AppRegName=YourOrg-MFA-Upload-Portal
 ```ini
 [Branding]
 CompanyName=Your Organisation
-PrimaryColour=#0078D4
-LogoUrl=
+LogoUrl=https://yourorg.com/logo.png
+SupportTeam=IT Security Team
+SupportEmail=itsupport@yourtenant.com
 ```
 
 | Setting | Description |
 |---------|-------------|
 | `CompanyName` | Organisation name shown in emails |
-| `PrimaryColour` | Brand colour for email templates |
 | `LogoUrl` | URL to company logo (optional) |
+| `SupportTeam` | Support team name shown in email footers |
+| `SupportEmail` | Support contact email shown in email footers |
 
 ### `[OpsGroup]`
 

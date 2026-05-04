@@ -1,6 +1,6 @@
 # Upload Portal
 
-The upload portal is a web-based interface hosted on Azure Storage as a static website. It provides three main functions for administrators.
+The upload portal is a single-page application (SPA) hosted on Azure Storage as a static website. It provides three tabs for administrators: CSV upload, manual entry, and a reports dashboard.
 
 ## Accessing the Portal
 
@@ -9,7 +9,7 @@ The portal URL is displayed at the end of deployment and stored in `mfa-config.i
 Typically: `https://<storageaccount>.z33.web.core.windows.net/`
 
 !!! note
-    The portal uses Azure AD authentication. Users must sign in with an account that has been granted access.
+    The portal uses Azure AD authentication via MSAL.js. Users must sign in with an account that has `User.Read` and `Sites.Read.All` scopes.
 
 ## Tab 1: CSV Upload
 
@@ -17,50 +17,91 @@ Upload a CSV file with users to onboard.
 
 ### CSV Format
 
+The CSV must include a column named `UPN`, `UserPrincipalName`, or `Email` (case-insensitive):
+
 ```csv
 UserPrincipalName,DisplayName
 user1@contoso.com,John Smith
 user2@contoso.com,Jane Doe
 ```
 
-- **UserPrincipalName** — Required. The user's email/UPN.
+- **UserPrincipalName** (or `UPN` / `Email`) — Required. The user's email/UPN.
 - **DisplayName** — Optional. Used in personalised emails.
 
 ### How It Works
 
-1. Drag and drop a CSV file or click to browse
-2. The portal validates the file format
-3. Users are sent to the Azure Function (`upload-users`)
-4. The function adds each user to the SharePoint list
-5. Progress is shown in real-time
+1. **Drag and drop** a `.csv` file onto the drop zone (or click to browse)
+2. **Client-side validation** runs automatically:
+    - Parses CSV headers and identifies the email column
+    - Validates email format with regex for each row
+    - Shows a **preview table** of the first 10 rows with valid/invalid indicators
+    - Displays a summary of total valid and invalid counts
+3. Click **Upload** to send validated users to the Function App (`/api/upload-users`)
+4. An **animated progress bar** shows upload progress
+5. **Results** display as stat cards: Total, Added, Updated, Skipped, Errors — with expandable error/skip details
+6. On success, a **branded success page** appears with auto-redirect to the Reports tab
+
+### Batch IDs
+
+Every upload gets a `SourceBatchId`:
+
+- Enter a custom batch ID before uploading, or
+- One is auto-generated as `yyyy-MM-dd-HHmm`
+
+Batch IDs are used to filter and track groups of users in the Reports tab.
+
+### Duplicate Handling
+
+Re-uploading an existing user resets them to `InviteStatus = Pending` and `MFARegistrationState = Unknown` for re-processing. The `SourceBatchId` is updated to the new batch.
 
 ## Tab 2: Manual Entry
 
-Add a single user without a CSV file.
+Add users without a CSV file.
 
-1. Enter the user's email address
-2. Optionally enter a display name
-3. Click Submit
-4. User is added to the SharePoint list immediately
+1. Enter email addresses in the text area — one per line or comma-separated
+2. Click **Submit**
+3. Users are added to the SharePoint list immediately with `InviteStatus = Pending`
 
 ## Tab 3: Reports Dashboard
 
-A live dashboard showing MFA rollout progress.
+A real-time dashboard showing MFA rollout progress, powered by Microsoft Graph queries against the SharePoint list.
 
-### Metrics
+### Executive Summary
 
 - **Total Users** — Complete count of all users in the rollout
-- **Completed** — Users with `InviteStatus = Active`
-- **Pending** — Users not yet completed
-- **Completion Rate** — Percentage of users completed
+- **MFA Active** — Users who have completed MFA enrollment
+- **Pending** — Users who haven't completed yet
+- **Completion Rate** — Percentage of users with Active status
 
-### Sections
+### Batch Filter
 
-- **Status Breakdown** — Visual breakdown by `InviteStatus` value
-- **Recent Activity** — Enrollments in the last 7 days
-- **Users Needing Attention** — Pending 3+ days, clicked but not in group
-- **Batch Performance** — Completion rates grouped by `SourceBatchId`
+A dropdown populated dynamically from all `SourceBatchId` values with per-batch user counts. Selecting a batch filters all dashboard sections.
 
-### Data Source
+### Status Breakdown
 
-The reports tab queries the SharePoint list in real-time using Microsoft Graph API. Data refreshes on each page load.
+Grid cards for each status (Pending, Sent, Clicked, AddedToGroup, Active, Error, Skipped) showing counts and percentages.
+
+### Recent Activity
+
+Activity from the last 7 days:
+
+- Invitations sent
+- Links clicked
+- Users added to group
+
+### Alerts
+
+- **High reminder alerts** — Red warning box highlighting users with 2+ reminders who still haven't completed MFA
+- **Users needing attention** — List of users requiring follow-up
+
+### Batch Performance
+
+Per-batch completion rates and user counts — useful for comparing rollout waves.
+
+### CSV Export
+
+Click **Export CSV** to download all report data as `mfa-report-YYYY-MM-DD.csv` with proper escaping.
+
+### Email Report
+
+Compose and send an executive summary email directly from the portal to configured recipients.

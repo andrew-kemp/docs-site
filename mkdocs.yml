@@ -8,6 +8,7 @@ copyright: >
 
 theme:
   name: material
+  custom_dir: overrides
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -79,6 +80,13 @@ markdown_extensions:
 
 plugins:
   - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      fallback_to_build_date: true
+
+hooks:
+  - hooks/git_revision_count.py
 
 nav:
   - DNS Migrator:

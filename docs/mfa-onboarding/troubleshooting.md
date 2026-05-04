@@ -147,7 +147,10 @@ Runs Function Auth fix, Graph Permissions fix, and Logic App Permissions fix in 
 
 If you're stuck:
 
-1. Check the Logic App run history in Azure Portal for error details
-2. Check Application Insights for Function App errors
+1. Check **Application Insights** for Function App errors (live metrics, request failures, exceptions)
+2. Check the Logic App **run history** in Azure Portal for error details
 3. Run `.\Create-TechnicalSummary.ps1` and review the output
 4. Check the `logs\` folder for deployment logs
+
+!!! tip "Application Insights"
+    Navigate to your Application Insights resource in the Azure Portal. Use **Live Metrics** during active rollouts, **Failures** to investigate errors, and **Transaction search** to trace individual requests through the system.
