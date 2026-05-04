@@ -17,6 +17,9 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,8 +35,11 @@ jobs:
       - name: Build site
         run: mkdocs build --strict
 
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Check auth
+        run: echo "Token set: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}"
+
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy site --project-name=andykemp-docs-site
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: wrangler pages deploy site --project-name=andykemp-docs-site
