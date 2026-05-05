@@ -1,6 +1,18 @@
 # What's New
 
-## v2 — Latest
+## v2.1 — Latest
+
+### Resend-BrokenLinks via Managed Identity
+
+- **`Resend-BrokenLinks.ps1`** — Rewritten to call the new `/api/resend` Function App endpoint using managed identity authentication, replacing the previous direct SharePoint approach. Eliminates credential dependency and aligns with the Function App's anti-enumeration response.
+
+### Apply-ScalingFix
+
+- **`Apply-ScalingFix.ps1`** — New script that applies scaling and performance configuration to the Function App. Addresses throughput bottlenecks during large batch rollouts by tuning host configuration and scaling settings.
+
+---
+
+## v2 
 
 ### New Entry Points
 

@@ -21,7 +21,7 @@ Before you begin, ensure you have:
 Open **PowerShell 7** (`pwsh`) and run the one-liner bootstrap command:
 
 ```powershell
-iwr https://raw.githubusercontent.com/andrew-kemp/MFA-Onboard-Tool/main/Get-MFAOnboarder.ps1 -OutFile Get-MFAOnboarder.ps1; .\Get-MFAOnboarder.ps1
+irm https://raw.githubusercontent.com/andrew-kemp/MFA-Onboard-Tool/main/v2/Get-MFAOnboarder.ps1 -OutFile Get-MFAOnboarder.ps1; .\Get-MFAOnboarder.ps1
 ```
 
 This does three things:
@@ -107,7 +107,7 @@ MailboxDelegate=admin@yourtenant.com
 
 ## Step 4: Deployment
 
-The full automated deployment (`Run-Complete-Deployment-Master.ps1`) runs all 12 steps in order with retry on failure:
+The full automated deployment (`Run-Complete-Deployment-Master.ps1`) runs all 8 scripts in order with retry on failure:
 
 | Step | Script | What It Does |
 |------|--------|--------------|

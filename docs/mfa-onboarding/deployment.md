@@ -8,7 +8,7 @@ The recommended way to start is with `Setup.ps1`:
 .\Setup.ps1
 ```
 
-For a fresh install, select **[1] New deployment** — this launches `Run-Complete-Deployment-Master.ps1` which runs all 12 steps automatically with retry on failure.
+For a fresh install, select **[1] New deployment** — this launches `Run-Complete-Deployment-Master.ps1` which runs all 8 scripts automatically with retry on failure.
 
 !!! tip "Don't have the scripts yet?"
     See [Quick Start](quick-start.md) for the one-liner bootstrap command to download everything.
@@ -21,7 +21,7 @@ For a fresh install, select **[1] New deployment** — this launches `Run-Comple
 .\Run-Complete-Deployment-Master.ps1
 ```
 
-This runs all 12 steps in order with automatic retry on failure. It supports resuming from where you left off if interrupted.
+This runs all 8 scripts in order with automatic retry on failure. It supports resuming from where you left off if interrupted.
 
 ### Option 2: Two-Part Deployment
 
