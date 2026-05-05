@@ -127,3 +127,8 @@ nav:
     - Reports & Exports: tenant-audit/reports.md
     - Licensing Requirements: tenant-audit/licensing.md
     - FAQ: tenant-audit/faq.md
+  - Privileged Path:
+    - privileged-path/index.md
+    - Quick Assessment: privileged-path/quick-assess.md
+    - The Framework: privileged-path/framework.md
+    - Privileged Access Workstations: privileged-path/paw.md
